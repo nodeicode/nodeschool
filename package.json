@@ -1,0 +1,23 @@
+{
+  "name": "nodeschool",
+  "version": "1.0.0",
+  "description": "snippets of practice nodejs code for a refresher",
+  "main": "basejs.js",
+  "dependencies": {
+    "javascripting": "^2.6.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nodeicode/nodeschool.git"
+  },
+  "author": "me",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nodeicode/nodeschool/issues"
+  },
+  "homepage": "https://github.com/nodeicode/nodeschool#readme"
+}
