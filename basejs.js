@@ -27,6 +27,11 @@ var roundUp = 1.5
 var rounded = Math.round(roundUp)
 console.log(rounded)*/
 
-//8:NUMBER TO STRING
+/*8:NUMBER TO STRING
 var n = 128
-console.log(n.toString())
+console.log(n.toString())*/
+
+/*9:IF STATEMENT
+var fruit = "orange"
+if(fruit.length>5)console.log("The fruit name has more than five characters.")
+else console.log("The fruit name has five characters or less.")*/
