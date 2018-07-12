@@ -4,7 +4,8 @@
   "description": "snippets of practice nodejs code for a refresher",
   "main": "basejs.js",
   "dependencies": {
-    "javascripting": "^2.6.1"
+    "javascripting": "^2.6.1",
+    "strftime": "^0.10.0"
   },
   "devDependencies": {},
   "scripts": {
