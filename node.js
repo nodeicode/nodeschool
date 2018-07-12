@@ -92,4 +92,58 @@ http.get(process.argv[2],function foo(nso){
 })
 })*/
 
-//10:TIME SERVER
+/*10:TIME SERVER
+var net = require('net')
+var strftime = require('strftime')
+var date = Date()
+     var server = net.createServer(function (socket) {
+       socket.end(strftime('%F %R\n', new Date()))
+     })
+     server.listen(process.argv[2])*/
+
+/*11:HTTP FILE SERVER
+var fs = require('fs')
+var http = require('http')
+
+var server = http.createServer((req,res)=>{
+    var str = fs.createReadStream(process.argv[3])
+    str.pipe(res)
+
+})
+server.listen(process.argv[2])*/
+
+/*12:HTTP UPPERCASER
+var http = require('http')
+var map = require('through2-map')
+var fs = require('fs')
+var server = http.createServer((req,res)=>{
+
+    req.pipe(map((chunk)=>{
+            return chunk.toString().toUpperCase()
+        })).pipe(res)
+})
+server.listen(process.argv[2])*/
+
+//13:HTTP JSON API SERVER
+var http = require('http')
+var path = require('path')
+var url = require('url')
+
+var server = http.createServer((req,res)=>{
+    res.writeHead(200, { 'Content-Type': 'application/json' })
+    var ob = url.parse(req.url,true)
+    var data = new Date(ob.query.iso)
+    if(ob.pathname=='/api/parsetime'){
+    res.write(JSON.stringify({"hour":data.getHours(),
+    "minute":data.getMinutes(),
+    "second":data.getSeconds()}),
+    (err,data)=>{if(err){console.log(Error)}})
+    }
+    else{
+     res.write(JSON.stringify({"unixtime":data.getTime()},(err,data)=>{if(err){console.log(Error)}return data}))
+    }
+    res.end()
+
+})
+server.listen(process.argv[2])
+
