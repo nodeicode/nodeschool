@@ -4,6 +4,7 @@
   "description": "snippets of practice nodejs code for a refresher",
   "main": "basejs.js",
   "dependencies": {
+    "electron": "^2.0.7",
     "javascripting": "^2.6.1",
     "strftime": "^0.10.0",
     "through2-map": "^3.0.0"
