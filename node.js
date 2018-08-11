@@ -125,25 +125,37 @@ var server = http.createServer((req,res)=>{
 server.listen(process.argv[2])*/
 
 //13:HTTP JSON API SERVER
-var http = require('http')
-var path = require('path')
-var url = require('url')
+var http = require("http");
+var path = require("path");
+var url = require("url");
 
-var server = http.createServer((req,res)=>{
-    res.writeHead(200, { 'Content-Type': 'application/json' })
-    var ob = url.parse(req.url,true)
-    var data = new Date(ob.query.iso)
-    if(ob.pathname=='/api/parsetime'){
-    res.write(JSON.stringify({"hour":data.getHours(),
-    "minute":data.getMinutes(),
-    "second":data.getSeconds()}),
-    (err,data)=>{if(err){console.log(Error)}})
-    }
-    else{
-     res.write(JSON.stringify({"unixtime":data.getTime()},(err,data)=>{if(err){console.log(Error)}return data}))
-    }
-    res.end()
-
-})
-server.listen(process.argv[2])
-
+var server = http.createServer((req, res) => {
+  res.writeHead(200, { "Content-Type": "application/json" });
+  var ob = url.parse(req.url, true);
+  var data = new Date(ob.query.iso);
+  if (ob.pathname == "/api/parsetime") {
+    res.write(
+      JSON.stringify({
+        hour: data.getHours(),
+        minute: data.getMinutes(),
+        second: data.getSeconds()
+      }),
+      (err, data) => {
+        if (err) {
+          console.log(Error);
+        }
+      }
+    );
+  } else {
+    res.write(
+      JSON.stringify({ unixtime: data.getTime() }, (err, data) => {
+        if (err) {
+          console.log(Error);
+        }
+        return data;
+      })
+    );
+  }
+  res.end();
+});
+server.listen(process.argv[2]);
